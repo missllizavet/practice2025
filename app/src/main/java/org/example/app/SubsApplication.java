@@ -12,23 +12,21 @@
 Задача должна быть покрыта тестами с помощью JUnit
 */
 
-package org.example;
+package org.example.app;
 
-import org.example.FileService.FileReader;
-import org.example.Model.Month;
-import org.example.Model.Publication;
-import org.example.Model.PublicationType;
-import org.example.Model.Subscriber;
-import org.example.Service.Service;
+import org.example.fileservice.FileReader;
+import org.example.model.Month;
+import org.example.model.Publication;
+import org.example.model.PublicationType;
+import org.example.model.Subscriber;
+import org.example.service.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class SubsApplication {
-    private static final String PATH = "C:\\Users\\lizan\\IdeaProjects\\practice\\src\\main\\java\\org\\example\\Task.txt";
+    private static final String PATH = "C:\\Users\\lizan\\IdeaProjects\\practice2025\\app\\src\\main\\resources\\Task.txt";
 
     public static void main(String[] args) {
         FileReader reader = new FileReader();

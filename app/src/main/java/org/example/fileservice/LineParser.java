@@ -1,8 +1,8 @@
-package org.example.FileService;
+package org.example.fileservice;
 
-import org.example.Model.Publication;
-import org.example.Model.PublicationType;
-import org.example.Model.Subscriber;
+import org.example.model.Publication;
+import org.example.model.PublicationType;
+import org.example.model.Subscriber;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
