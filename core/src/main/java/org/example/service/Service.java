@@ -1,9 +1,9 @@
-package org.example.Service;
+package org.example.service;
 
-import org.example.Model.Month;
-import org.example.Model.Publication;
-import org.example.Model.PublicationType;
-import org.example.Model.Subscriber;
+import org.example.model.Month;
+import org.example.model.Publication;
+import org.example.model.PublicationType;
+import org.example.model.Subscriber;
 
 import java.util.Comparator;
 import java.util.List;

@@ -1,6 +1,6 @@
-package org.example.FileService;
+package org.example.fileservice;
 
-import org.example.Model.Subscriber;
+import org.example.model.Subscriber;
 
 import java.io.File;
 import java.io.FileNotFoundException;
