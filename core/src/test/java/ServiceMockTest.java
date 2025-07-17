@@ -1,5 +1,3 @@
-//package org.example.service;
-
 import org.example.model.*;
 import org.example.service.Service;
 import org.junit.Before;
