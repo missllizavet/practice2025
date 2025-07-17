@@ -5,6 +5,7 @@ import org.example.model.PublicationType;
 import org.example.model.Subscriber;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -41,15 +42,24 @@ public class LineParser {
         String[] publicationParts = publicationsString.split(";");
 
         for (int i = 0; i < publicationParts.length; i += publicationLen) {
+            try {
+                String title = publicationParts[i];
+                PublicationType type = PublicationType.valueOf(publicationParts[i + 1]);
+                LocalDate startDate = LocalDate.parse(publicationParts[i + 2]);
+                LocalDate endDate = LocalDate.parse(publicationParts[i + 3]);
 
-            String title = publicationParts[i];
-            PublicationType type = PublicationType.valueOf(publicationParts[i + 1]);
-
-            LocalDate startDate = LocalDate.parse(publicationParts[i + 2]);
-            LocalDate endDate = LocalDate.parse(publicationParts[i + 3]);
-
-            publications.add(new Publication(title, type, startDate, endDate));
+                publications.add(new Publication(title, type, startDate, endDate));
+            } catch (ArrayIndexOutOfBoundsException e) {
+                throw new IllegalArgumentException("Неполные данные для публикации.  Требуется 4 части (название;тип;дата начала;дата окончания). Индекс: " + i + ", строка: " + publicationsString);
+            } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException("Неверный формат типа публикации. Допустимые значения: NEWSPAPER, MAGAZINE.  Значение: " + publicationParts[i + 1] + ", строка: " + publicationsString);
+            } catch (DateTimeParseException e) {
+                throw new IllegalArgumentException("Неверный формат даты. Используйте формат YYYY-MM-DD.  Строка: " + publicationsString);
+            } catch (Exception e) {
+                throw new IllegalArgumentException("Неизвестная ошибка при парсинге данных публикации. Строка: " + publicationsString + ", сообщение: " + e.getMessage());
+            }
         }
+
 
         return new Subscriber(fullName, deliveryArea, address, numberOfSubscriptions, publications);
     }
